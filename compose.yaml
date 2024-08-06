@@ -1,0 +1,42 @@
+services:
+  proxy:
+    image: traefik:v3.1.1
+    command: --providers.docker --api.insecure=true
+    ports:
+      - "80:80"
+      - 8080:8080
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  client:
+    image: nginx:alpine
+    volumes:
+      - "./client:/usr/share/nginx/html"
+    labels:
+      traefik.http.routers.client.rule: "Host(`localhost`)"
+
+  api:
+    build: ./dev/api
+    volumes:
+      - "./api:/var/www/html"
+    labels:
+      traefik.http.routers.api.rule: "Host(`localhost`) && PathPrefix(`/api`)"
+      traefik.http.middlewares.api-stripprefix.stripprefix.prefixes: "/api"
+      traefik.http.routers.api.middlewares: api-stripprefix
+
+  db:
+    image: mysql:9.0
+    volumes:
+      - ./dev/db:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sample
+
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    labels:
+      traefik.http.routers.db.rule: "Host(`db.localhost`)"
+      traefik.http.services.db.loadbalancer.server.port: "80"
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: password
