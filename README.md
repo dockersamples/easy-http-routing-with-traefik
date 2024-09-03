@@ -1,8 +1,8 @@
 # Easy HTTP routing with Traefik
 
-This sample app accompanies the [Easy HTTP routing with Traefik](#) guide. 
+This sample app accompanies the [Easy HTTP routing with Traefik](#) guide. The application is purposely kept simple to allow the focus to remain on the content of the guide - HTTP routing with Traefik. With Traefik, it is easy to use multiple services to split development tooling or provide additional visualization and troubleshooting tools.
 
-While this repo is being maintained, the application is purposely simplified to allow the focus to remain on the content of the guide. In this example, the app could be a single service. But, the point is to demonstrate how various services could be split out and HTTP routing simplified through the use of a reverse proxy (such as a React frontend with a Node/Java/.NET/anything else backend).
+Notice: This sample repo is intended to support the guide mentioned above. As such, the application code is purposely kept simple to keep the focus on the guide's content and should not be considered production ready.
 
 ![App architecture](./architecture.png)
 
@@ -17,6 +17,4 @@ When you're done, run `docker compose down` to tear everything down.
 
 ## Contributing
 
-Find a bug? Feel free to create an issue or submit a PR. 
-
-If you have a feature request, feel free to open an issue. Be mindful that this repo is intended to serve as a sample for a specific guide. Therefore, features that go beyond the scope of the guide are likely to be rejected.
+Since this project is intended to support a specific use case guide, contributions are limited to bug fixes or security issues. If you have a question, feel free to open an issue!

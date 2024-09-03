@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Random message retriever</title>
-</head>
-<body>
-  <h1>Random message retriever</h1>
-  <p>Click the button below to retrieve a random message from the server.</p>
-
-  <button id="getMessage">Get message from the API</button>
-  <p id="message"></p>
-  
-  <script>
-    document.getElementById("getMessage").addEventListener("click", async () => {
-      try {
-        const response = await fetch("/api/message");
-        const { message } = await response.json();
-        document.getElementById("message").textContent = `Your message: ${message}`;
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    });
-  </script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
