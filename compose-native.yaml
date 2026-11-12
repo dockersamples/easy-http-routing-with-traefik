@@ -1,6 +1,6 @@
 services:
   proxy:
-    image: traefik:v3.1.2
+    image: traefik:v3.6.25
     command: --providers.docker --providers.file.filename=/config/traefik-config.yaml --api.insecure
     ports:
       - 80:80
