@@ -57,3 +57,5 @@ services:
     image: mongo-express:1.0.2
     labels:
       traefik.http.routers.db.rule: "Host(`db.localhost`)"
+    environment:
+      ME_CONFIG_BASICAUTH: "false"
