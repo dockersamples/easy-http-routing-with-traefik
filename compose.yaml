@@ -1,7 +1,9 @@
 services:
   proxy:
-    image: traefik:v3.1.2
-    command: --providers.docker
+    image: traefik:v3.6.25
+    command:
+      - --providers.docker
+      - --providers.docker.constraints=Label(`com.docker.compose.project`,`easy-http-routing-with-traefik`)
     ports:
       - 80:80
     volumes:
@@ -55,3 +57,5 @@ services:
     image: mongo-express:1.0.2
     labels:
       traefik.http.routers.db.rule: "Host(`db.localhost`)"
+    environment:
+      ME_CONFIG_BASICAUTH: "false"

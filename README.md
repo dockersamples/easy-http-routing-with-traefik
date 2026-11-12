@@ -11,7 +11,7 @@ Notice: This sample repo is intended to support the guide mentioned above. As su
 1. Clone this repo
 2. Run `docker compose up`
 3. Open the site at http://localhost. Requests to get data will go to `/api/message`, which is routed to the API service.
-4. Open phpMyAdmin (database visualizer) at http://db.localhost
+4. Open mongo-express (database visualizer) at http://db.localhost
 
 When you're done, run `docker compose down` to tear everything down.
 
