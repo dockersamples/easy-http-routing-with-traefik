@@ -1,5 +1,5 @@
 # Stage 1: Build the Vite React app
-FROM node:lts-alpine AS base
+FROM node:24-alpine AS base
 WORKDIR /usr/local/app
 COPY package.json yarn.lock ./
 
@@ -9,7 +9,7 @@ COPY . .
 CMD ["yarn", "dev"]
 
 FROM base AS build
-RUN yarn install --frozen-lockfile --production
+RUN yarn install --frozen-lockfile
 COPY . .
 RUN yarn build
 
